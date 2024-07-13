@@ -19,9 +19,18 @@ stages{
             script {
                 withCredentials([string(credentialsId:'docker_hub',variable:'docker_hub')]){
                 sh 'docker login -u vasyvasf@gmail.com -p ${docker_hub}'
-
+                sh 'docker push srinivasulu0514/dockervasu'
+                }
             }
-            sh 'docker push srinivasulu0514/dockervasu'
+        }
+    }
+    stage('Deploy deployment and service file'){
+        steps{
+            script{
+                kubernetesDeploy configs: 'deploymentsvc.yaml',kubeconfigId:'k8_auth'
+            }
         }
     }
 }
+}
+
