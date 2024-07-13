@@ -23,6 +23,7 @@ stages{
             }
         }
     }
+    }
     stage('Deploy deployment and service file'){
         steps{
             script{
@@ -32,4 +33,5 @@ stages{
     }
 }
 }
+
 
